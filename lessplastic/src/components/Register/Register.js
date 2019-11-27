@@ -7,7 +7,7 @@ export class Register extends Component {
         return (
             <Container>
                 <Row>
-                    <Col md={{ span: 7, offset: 3 }}>
+                    <Col md={{ span: 6, offset: 3 }}>
                         <Form>
                             <h1 className="text-center mt-3">Register</h1>
                             <Form.Group controlId="formGridEmail">
@@ -18,22 +18,13 @@ export class Register extends Component {
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control type="password" placeholder="Password" />
                             </Form.Group>
-                            <Form.Group controlId="formGridAddress1">
-                                <Form.Label>Address</Form.Label>
-                                <Form.Control placeholder="1234 Main St" />
+                            <Form.Group controlId="formGridNickname">
+                                <Form.Label>Nickname</Form.Label>
+                                <Form.Control placeholder="Username" />
                             </Form.Group>
-                            <Form.Row>
-                                <Form.Group as={Col} controlId="formGridCity">
-                                    <Form.Label>City</Form.Label>
-                                    <Form.Control />
-                                </Form.Group>
-                                <Form.Group as={Col} controlId="formGridZip">
-                                    <Form.Label>Zip</Form.Label>
-                                    <Form.Control />
-                                </Form.Group>
-                            </Form.Row>
-                            <Form.Group className="text-center" id="formGridCheckbox">
-                                <Form.Check type="checkbox" label="Check me out" />
+                            <Form.Group controlId="formGridCity">
+                                <Form.Label>City</Form.Label>
+                                <Form.Control placeholder="Sozopol" />
                             </Form.Group>
                             <Form.Group className="text-center" id="formGridButton">
                                 <Button className="text-center" variant="primary" type="submit">Submit</Button>

@@ -18,10 +18,10 @@ export class Footer extends Component {
                                     <hr style={{margin: 0, borderColor: 'white'}}/>
                                     <ul>
                                         <li>
-                                            <a href="#!" style={{color: 'white'}}><FaInfoCircle style={{color: 'white', marginBottom: '3px'}}/> About us</a>
+                                            <a href="/about" style={{color: 'white'}}><FaInfoCircle style={{color: 'white', marginBottom: '3px'}}/> About us</a>
                                         </li>
                                         <li>
-                                            <a href="#!"  style={{color: 'white'}}><FaCookieBite style={{color: 'white', marginBottom: '3px'}}/> Cookies</a>
+                                            <a href="/privacy"  style={{color: 'white'}}><FaCookieBite style={{color: 'white', marginBottom: '3px'}}/> Cookies</a>
                                         </li>
                                     </ul>
                                 </div>

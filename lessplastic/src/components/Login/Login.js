@@ -7,7 +7,7 @@ export class Login extends Component {
         return (
             <Container>
                 <Row>
-                    <Col md={{ span: 7, offset: 3 }}>
+                    <Col md={{ span: 6, offset: 3 }}>
                         <h1 className="text-center mt-3">Login</h1>
                         <Form>
                             <Form.Group controlId="formGridEmail">

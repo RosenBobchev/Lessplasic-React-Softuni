@@ -19,10 +19,10 @@ export class NavMenu extends Component {
                             <Nav.Link href="#videos"><FaVideo style={{color: 'white', marginBottom: '3px'}}/> Videos</Nav.Link>
                             <Nav.Link href="#polls"><FaPoll style={{color: 'white', marginBottom: '3px'}}/> Polls</Nav.Link>
                             <NavDropdown title="User panel" id="collasible-nav-dropdown">
-                                <NavDropdown.Item href="#createArticle">Create Article</NavDropdown.Item>
-                                <NavDropdown.Item href="#createEvent">Create Event</NavDropdown.Item>
-                                <NavDropdown.Item href="#createPoll">Create Poll</NavDropdown.Item>
-                                <NavDropdown.Item href="#addVideo">Add Video</NavDropdown.Item>
+                                <NavDropdown.Item href="/createArticle">Create Article</NavDropdown.Item>
+                                <NavDropdown.Item href="/createEvent">Create Event</NavDropdown.Item>
+                                <NavDropdown.Item href="/createPoll">Create Poll</NavDropdown.Item>
+                                <NavDropdown.Item href="/addVideo">Add Video</NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
                         <Nav>
