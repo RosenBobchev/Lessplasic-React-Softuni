@@ -34,6 +34,14 @@ export class CreateArticle extends Component {
                                 <Form.Label>Additional Content Image (optional)</Form.Label>
                                 <Form.Control placeholder="Image url" />
                             </Form.Group>
+                            <Form.Group controlId="articleType">
+                                <Form.Label>Article Type</Form.Label>
+                                <Form.Control as="select">
+                                    <option>Regular</option>
+                                    <option>Science</option>
+                                    <option>Kids</option>
+                                </Form.Control>
+                            </Form.Group>
                             <Form.Group className="text-center" id="formGridButton">
                                 <Button className="text-center" variant="primary" type="submit">Create</Button>
                             </Form.Group>

@@ -14,6 +14,10 @@ export class CreateEvent extends Component {
                                 <Form.Label>Event Name</Form.Label>
                                 <Form.Control placeholder="Name" />
                             </Form.Group>
+                            <Form.Group controlId="formGridTowns">
+                                <Form.Label>Towns</Form.Label>
+                                <Form.Control placeholder="Town1, Town2, Town3.." />
+                            </Form.Group>
                             <Form.Group controlId="formGridDescr">
                                 <Form.Label>Description</Form.Label>
                                 <Form.Control as="textarea" rows='5'  placeholder="Description" />

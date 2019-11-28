@@ -12,6 +12,8 @@ import { CreateArticle } from './components/Article/CreateArticle';
 import { CreateEvent } from './components/Event/CreateEvent';
 import { AddVideo } from './components/Video/AddVideo';
 import { CreatePoll } from './components/Poll/CreatePoll';
+import ArticleDetails  from './components/Article/DetailsArticle';
+import EventDetails  from './components/Event/DetailsEvent';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import img from "./Images/background-img.jpg";
@@ -30,6 +32,8 @@ function App() {
                   <Route path='/createEvent' component={CreateEvent} />
                   <Route path='/createPoll' component={CreatePoll} />
                   <Route path='/addVideo' component={AddVideo} />
+                  <Route path='/articleDetails/1' exact component={ArticleDetails} />
+                  <Route path='/eventDetails/1' exact component={EventDetails} />
               </Router>
           </Layout>
       </Container>
