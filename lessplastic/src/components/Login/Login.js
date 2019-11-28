@@ -19,7 +19,7 @@ export class Login extends Component {
                                 <Form.Control type="password" placeholder="Password" />
                             </Form.Group>
                             <Form.Group className="text-center" id="formGridButton">
-                                <Button className="text-center" variant="primary" type="submit">Submit</Button>
+                                <Button className="text-center" variant="primary" type="submit" style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Submit</Button>
                             </Form.Group>
                         </Form>
                     </Col>

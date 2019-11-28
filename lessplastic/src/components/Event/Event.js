@@ -11,7 +11,7 @@ const Event = ({ event }) => {
             <Card.Body>
                 <Card.Title>Title</Card.Title>
                 <Card.Text>Description</Card.Text>
-                <Link to={`/eventDetails/${1}`}  style={{flexDirection: 'row', justifyContent: 'flex-end', display: 'flex'}}><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>See more</Button></Link>
+                <Link to={`/eventDetails/${1}`}  style={{flexDirection: 'row', justifyContent: 'flex-end', display: 'flex', textDecoration: 'none'}}><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>See more</Button></Link>
             </Card.Body>
         </Card>
     )

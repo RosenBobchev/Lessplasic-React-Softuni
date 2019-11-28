@@ -27,7 +27,7 @@ export class Register extends Component {
                                 <Form.Control placeholder="Sozopol" />
                             </Form.Group>
                             <Form.Group className="text-center" id="formGridButton">
-                                <Button className="text-center" variant="primary" type="submit">Submit</Button>
+                                <Button className="text-center" variant="primary" type="submit"  style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue', marginBottom: '-80px'}}>Submit</Button>
                             </Form.Group>
                         </Form>
                     </Col>

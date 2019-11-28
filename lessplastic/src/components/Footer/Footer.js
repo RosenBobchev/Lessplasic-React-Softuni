@@ -8,7 +8,7 @@ export class Footer extends Component {
 
     render() {
         return (
-            <footer className="pt-4">
+            <footer style={{marginTop: '120px'}}>
                 <div style={{background:'deepskyblue', color: 'white'}}>
                     <div>
                         <Row>

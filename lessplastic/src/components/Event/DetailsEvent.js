@@ -6,7 +6,7 @@ const EventDetails = ({ event }) => {
 
     return (
         <div>
-            <h2 className="text-center">Title</h2>
+            <h2 className="text-center" style={{marginTop: '10px'}}>Title</h2>
             <div className="row col-md-12 text-center" style={{justifyContent: 'space-around'}}>
                 <p>Дата: 28.11.2019 21:30</p>
                 <div>
@@ -35,7 +35,7 @@ const EventDetails = ({ event }) => {
                 </div>
             </div>
             <br />
-            <div className="row" style={{justifyContent: 'center'}}>
+            <div className="row" style={{justifyContent: 'center' , marginBottom: '-80px', marginTop: '20px'}}>
                 <div>
                     <Link to={`/editArticle/${1}`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Edit</Button></Link>
                 </div>

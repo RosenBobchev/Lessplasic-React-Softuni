@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Article from '../Article/Article';
 import Event from '../Event/Event';
 import PollDetails from '../Poll/Poll';
+import Video from '../Video/Video';
 
 export class Home extends Component {
 
@@ -9,26 +10,10 @@ export class Home extends Component {
         return (
             <div>
                 <h1>Welcome to Lessplastic!</h1>
-                <p>Everything you need to know about plastic.</p>
-                <p>Everything you need to know about plastic.</p>
-                <p>Everything you need to know about plastic.</p>
-                <p>Everything you need to know about plastic.</p>
-                <p>Everything you need to know about plastic.</p>
-                <p>Everything you need to know about plastic.</p>
-                <p>Everything you need to know about plastic.</p>
-                <p>Everything you need to know about plastic.</p>
-                <p>Everything you need to know about plastic.</p>
-                <p>Everything you need to know about plastic.</p>
-                <p>Everything you need to know about plastic.</p>
-                <p>Everything you need to know about plastic.</p>
-                <p>Everything you need to know about plastic.</p>
-                <p>Everything you need to know about plastic.</p>
-                <p>Everything you need to know about plastic.</p>
-                <p>Everything you need to know about plastic.</p>
-                <p>Everything you need to know about plastic.</p>
                     <Article />
                     <Event />
                     <PollDetails />
+                    <Video />
             </div>
         )
     }

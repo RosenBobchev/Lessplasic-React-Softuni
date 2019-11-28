@@ -14,13 +14,14 @@ import { AddVideo } from './components/Video/AddVideo';
 import { CreatePoll } from './components/Poll/CreatePoll';
 import ArticleDetails  from './components/Article/DetailsArticle';
 import EventDetails  from './components/Event/DetailsEvent';
+import VideoDetails  from './components/Video/DetailsVideo';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import img from "./Images/background-img.jpg";
 
 function App() {
   return (
-      <Container style={{backgroundImage: `url(${img})`}} fluid='true'>
+      <Container style={{backgroundImage: `url(${img})`, minHeight: '100%'}} fluid='true'>
           <Layout>
               <Router>
                   <Route exact path='/' component={Home} />
@@ -34,6 +35,7 @@ function App() {
                   <Route path='/addVideo' component={AddVideo} />
                   <Route path='/articleDetails/1' exact component={ArticleDetails} />
                   <Route path='/eventDetails/1' exact component={EventDetails} />
+                  <Route path='/videoDetails/1' exact component={VideoDetails} />
               </Router>
           </Layout>
       </Container>

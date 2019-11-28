@@ -32,8 +32,7 @@ const ArticleDetails = ({ article }) => {
                 <Image src={banner}  style={{width: '100%', maxHeight: '300px', maxWidth: '600px', height: 'auto'}} />
             </div>
             <br/>
-            <hr className="hr-2 bg-dark"/>
-            <div className="row" style={{justifyContent: 'center'}}>
+            <div className="row" style={{justifyContent: 'center', marginBottom: '-80px', marginTop: '20px'}}>
                 <div>
                     <Link to={`/editArticle/${1}`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Edit</Button></Link>
                 </div>
