@@ -15,6 +15,10 @@ import { CreatePoll } from './components/Poll/CreatePoll';
 import ArticleDetails  from './components/Article/DetailsArticle';
 import EventDetails  from './components/Event/DetailsEvent';
 import VideoDetails  from './components/Video/DetailsVideo';
+import UpdateDeleteArticle from "./components/Article/UpdateDeleteArticle";
+import UpdateDeleteEvent from "./components/Event/UpdateDeleteEvent";
+import UpdateDeleteVideo from "./components/Video/UpdateDeleteVideo";
+import DeletePoll from "./components/Poll/DeletePoll";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import img from "./Images/background-img.jpg";
@@ -33,9 +37,16 @@ function App() {
                   <Route path='/createEvent' component={CreateEvent} />
                   <Route path='/createPoll' component={CreatePoll} />
                   <Route path='/addVideo' component={AddVideo} />
-                  <Route path='/articleDetails/1' exact component={ArticleDetails} />
-                  <Route path='/eventDetails/1' exact component={EventDetails} />
-                  <Route path='/videoDetails/1' exact component={VideoDetails} />
+                  <Route path='/articleDetails/:articleId' exact component={ArticleDetails} />
+                  <Route path='/eventDetails/:eventId' exact component={EventDetails} />
+                  <Route path='/videoDetails/:videoId' exact component={VideoDetails} />
+                  <Route path='/deleteArticle/:articleId' exact component={UpdateDeleteArticle} />
+                  <Route path='/editArticle/:articleId' exact component={UpdateDeleteArticle} />
+                  <Route path='/editEvent/:eventId' exact component={UpdateDeleteEvent} />
+                  <Route path='/deleteEvent/:eventId' exact component={UpdateDeleteEvent} />
+                  <Route path='/deleteVideo/:videoId' exact component={UpdateDeleteVideo} />
+                  <Route path='/editVideo/:videoId' exact component={UpdateDeleteVideo} />
+                  <Route path='/deletePoll/:pollId' exact component={DeletePoll} />
               </Router>
           </Layout>
       </Container>

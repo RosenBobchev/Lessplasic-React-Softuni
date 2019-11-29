@@ -37,7 +37,7 @@ const ArticleDetails = ({ article }) => {
                     <Link to={`/editArticle/${1}`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Edit</Button></Link>
                 </div>
                 <div>
-                    <Link to={`/editArticle/${1}`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Delete</Button></Link>
+                    <Link to={`/deleteArticle/${1}`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Delete</Button></Link>
                 </div>
                 <div>
                     <Link to={`/articles`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Back</Button></Link>

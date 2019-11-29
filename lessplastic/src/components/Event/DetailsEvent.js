@@ -37,10 +37,10 @@ const EventDetails = ({ event }) => {
             <br />
             <div className="row" style={{justifyContent: 'center' , marginBottom: '-80px', marginTop: '20px'}}>
                 <div>
-                    <Link to={`/editArticle/${1}`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Edit</Button></Link>
+                    <Link to={`/editEvent/${1}`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Edit</Button></Link>
                 </div>
                 <div>
-                    <Link to={`/editArticle/${1}`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Delete</Button></Link>
+                    <Link to={`/deleteEvent/${1}`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Delete</Button></Link>
                 </div>
                 <div>
                     <Link to={`/events`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Back</Button></Link>

@@ -18,20 +18,20 @@ const VideoDetails = ({ video }) => {
                 </div>
                 <div className="col-md-6">
                     <div className="container d-flex justify-content-aroud">
-                        <text>@Model.Description</text>
+                        <h5 style={{color: 'black', wordWrap: 'break-word', width:'100%'}}>DescriptionDiptioniptioniptioniptioniptioniptioniptioniptioniptionescriptionDescriptionDescriptionDescriptionDescriptionDescription</h5>
                     </div>
                 </div>
             </div>
             <br/>
             <div className="row" style={{justifyContent: 'center', marginBottom: '-100px'}}>
                 <div>
-                    <Link to={`/editArticle/${1}`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Edit</Button></Link>
+                    <Link to={`/editVideo/${1}`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Edit</Button></Link>
                 </div>
                 <div>
-                    <Link to={`/editArticle/${1}`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Delete</Button></Link>
+                    <Link to={`/deleteVideo/${1}`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Delete</Button></Link>
                 </div>
                 <div>
-                    <Link to={`/video`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Back</Button></Link>
+                    <Link to={`/videos`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Back</Button></Link>
                 </div>
             </div>
         </div>

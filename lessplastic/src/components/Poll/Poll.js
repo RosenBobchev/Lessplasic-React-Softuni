@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import Poll from 'react-polls';
 
 // Declaring poll question and answers
-const pollQuestion = 'Is react-polls useful?'
+const pollQuestion = 'Is react-polls useful?';
 const pollAnswers = [
     { option: 'Yes', votes: 8 },
     { option: 'No', votes: 2 }
-]
+];
 
 export default class PollDetails extends Component {
     // Setting answers to state to reload the component with each vote
