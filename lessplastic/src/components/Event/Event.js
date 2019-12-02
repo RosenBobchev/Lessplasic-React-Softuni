@@ -6,7 +6,7 @@ import Card from "react-bootstrap/Card";
 const Event = ({ event }) => {
 
     return (
-        <Card style={{ width: '45%' }}>
+        <Card>
             <Card.Header>Event</Card.Header>
             <Card.Body>
                 <Card.Title>Title</Card.Title>

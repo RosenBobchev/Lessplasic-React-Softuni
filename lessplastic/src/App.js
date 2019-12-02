@@ -19,6 +19,10 @@ import UpdateDeleteArticle from "./components/Article/UpdateDeleteArticle";
 import UpdateDeleteEvent from "./components/Event/UpdateDeleteEvent";
 import UpdateDeleteVideo from "./components/Video/UpdateDeleteVideo";
 import DeletePoll from "./components/Poll/DeletePoll";
+import AllArticles from "./components/Article/AllArticles";
+import AllEvents from "./components/Event/AllEvents";
+import AllPolls from "./components/Poll/AllPolls";
+import AllVideos from "./components/Video/AllVideos";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import img from "./Images/background-img.jpg";
@@ -47,6 +51,10 @@ function App() {
                   <Route path='/deleteVideo/:videoId' exact component={UpdateDeleteVideo} />
                   <Route path='/editVideo/:videoId' exact component={UpdateDeleteVideo} />
                   <Route path='/deletePoll/:pollId' exact component={DeletePoll} />
+                  <Route path='/articles' exact component={AllArticles} />
+                  <Route path='/events' exact component={AllEvents} />
+                  <Route path='/polls' exact component={AllPolls} />
+                  <Route path='/videos' exact component={AllVideos} />
               </Router>
           </Layout>
       </Container>

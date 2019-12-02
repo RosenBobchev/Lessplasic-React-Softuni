@@ -3,6 +3,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { FaPhone, FaFacebookSquare, FaInstagram, FaCookieBite, FaInfoCircle } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import {FacebookProvider, Like} from "react-facebook";
 
 export class Footer extends Component {
 
@@ -22,6 +23,11 @@ export class Footer extends Component {
                                         </li>
                                         <li>
                                             <a href="/privacy"  style={{color: 'white'}}><FaCookieBite style={{color: 'white', marginBottom: '3px'}}/> Cookies</a>
+                                        </li>
+                                        <li>
+                                        <FacebookProvider appId="2661552967246067">
+                                            <Like href="https://www.facebook.com/LessplasticBulgaria/" colorScheme={'dark'} showFaces={false} share />
+                                        </FacebookProvider>
                                         </li>
                                     </ul>
                                 </div>

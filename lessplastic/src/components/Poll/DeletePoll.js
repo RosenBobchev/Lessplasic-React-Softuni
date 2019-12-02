@@ -4,7 +4,7 @@ import {Button, Col, Container, Form, Row} from "react-bootstrap";
 const DeletePoll = ({ match }) => {
     const path = match.path;
     const {params: { pollId }} = match;
-    const deleteTrue = path.indexOf('deleteVideo') === 1 ? 'delete' : 'notDelete';
+    const deleteTrue = path.indexOf('deletePoll') === 1 ? 'delete' : 'notDelete';
 
     return (
         <Container>
@@ -12,7 +12,7 @@ const DeletePoll = ({ match }) => {
             <Row>
                 <Col md={{ span: 6, offset: 3 }}>
                     <Form>
-                        <h1 className="text-center mt-3">{deleteTrue === 'delete' ? 'Delete Video' : 'Edit Video'}</h1>
+                        <h1 className="text-center mt-3">{deleteTrue === 'delete' ? 'Delete Poll' : 'Edit Poll'}</h1>
                         <Form.Group controlId="formGridQuestion">
                             <Form.Label>Question</Form.Label>
                             <Form.Control placeholder="Question" disabled={deleteTrue === 'delete'}/>

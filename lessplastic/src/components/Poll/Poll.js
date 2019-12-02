@@ -31,7 +31,7 @@ export default class PollDetails extends Component {
     render () {
         const { pollAnswers } = this.state;
         return (
-            <div style={{width: '45%'}}>
+            <div>
                 <Poll question={pollQuestion} answers={pollAnswers} onVote={this.handleVote} customStyles={{theme: 'cyan', questionBold: true}}/>
             </div>
         );
