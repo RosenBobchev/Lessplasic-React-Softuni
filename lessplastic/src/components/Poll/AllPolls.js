@@ -22,6 +22,7 @@ export default class allPolls extends Component {
             if (answer.option === voteAnswer) answer.votes++;
             return answer
         });
+
         this.setState({
             pollAnswers: newPollAnswers
         })

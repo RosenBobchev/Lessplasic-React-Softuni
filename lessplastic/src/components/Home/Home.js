@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CarouselComponent from "../Utils/Carousel";
-import {Container} from "react-bootstrap";
+import {Container, Image} from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Article from "../Article/Article";
@@ -17,8 +17,7 @@ export class Home extends Component {
             {id: 3, image: 'https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', title: 'Third Article', description: 'Description for Third Article'}];
 
         return (
-            <Container>
-                    <h1 style={{textAlign: 'center', margin: '1rem'}}>Welcome to Lessplastic!</h1>
+            <Container style={{marginTop: '20px'}}>
                 <Row>
                     <Col md={8}>
                         <div style={{width: '100%', maxHeight: '400px', maxWidth: '700px', height: 'auto'}}>
