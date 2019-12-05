@@ -1,4 +1,5 @@
 import axios from 'axios'
+import authService from "./authService";
 
 let remote = (() => {
     const BASE_URL = 'https://baas.kinvey.com/';
@@ -8,6 +9,9 @@ let remote = (() => {
     function makeAuth(auth) {
         if (auth === 'basic') {
             return `Basic ${btoa(APP_KEY + ":" + APP_SECRET)}`;
+        } else if(auth === 'guest') {
+            authService.login('Guest', 'guest').then((userData) => sessionStorage.setItem('guestUser', userData.data._kmd.authtoken));
+            return `Kinvey ${sessionStorage.getItem('guestUser')}`
         } else {
             return `Kinvey ${sessionStorage.getItem('authtoken')}`
         }

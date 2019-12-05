@@ -6,7 +6,7 @@ let authService = (() => {
     }
 
     function saveSession(userData) {
-        console.log(userData)
+        sessionStorage.removeItem('guestUser');
         sessionStorage.setItem('authtoken', userData.data._kmd.authtoken);
         sessionStorage.setItem('username', userData.data.username);
         sessionStorage.setItem('userId', userData.data._id);

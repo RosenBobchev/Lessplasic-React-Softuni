@@ -16,7 +16,9 @@ class NavMenu extends Component {
     logout = () => {
         authService.logout()
             .then(() => {
-                sessionStorage.clear();
+                sessionStorage.removeItem('authtoken');
+                sessionStorage.removeItem('username');
+                sessionStorage.removeItem('userId');
                 this.props.history.push('/')
             });
     };
