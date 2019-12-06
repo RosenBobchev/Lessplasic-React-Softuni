@@ -9,6 +9,9 @@ import PollDetails from "../Poll/Poll";
 import Video from "../Video/Video";
 import {FacebookProvider, Page} from 'react-facebook';
 import articleService from "../../services/articleService";
+import videoService from "../../services/videoService";
+import eventService from "../../services/eventService";
+import remote from '../../services/remote'
 
 export class Home extends Component {
 
@@ -16,21 +19,45 @@ export class Home extends Component {
         super(props);
 
         this.state = {
-            articlesFromDatabase: []
+            articlesFromDatabase: [],
+            videosFromDatabase: [],
+            eventsFromDatabase: [],
         }
     }
+
     componentDidMount() {
         articleService.getAllArticles().then((data) => this.setState({articlesFromDatabase: data.data}));
+        videoService.getAllVideos().then((data) => this.setState({videosFromDatabase: data.data}));
+        eventService.getAllEvents().then((data) => this.setState({eventsFromDatabase: data.data}));
     }
 
     render() {
-        const {articlesFromDatabase} = this.state;
+        const {articlesFromDatabase, videosFromDatabase, eventsFromDatabase} = this.state;
         const articles = articlesFromDatabase.map(a => (
             <Col md={4} key={a._id}>
                 <div>
                     <Article articleProps={a}/>
                 </div>
             </Col>));
+
+
+        const videos = videosFromDatabase.map(v => (
+            <Col md={6} key={v._id}>
+                <div style={{marginTop: '1rem'}}>
+                    <Video videoProps={v}/>
+                </div>
+            </Col>
+        ));
+
+        const events = eventsFromDatabase.map(e => (
+            <Col md={4} key={e._id}>
+                <div style={{marginTop: '1rem'}}>
+                    <Event eventProps={e}/>
+                </div>
+            </Col>
+        ));
+
+
         return (
             <Container style={{marginTop: '20px'}}>
                 <Row>
@@ -54,17 +81,7 @@ export class Home extends Component {
                         <iframe src='https://www.juicer.io/api/feeds/rosenbobchev/iframe' frameBorder='0' style={{width: '100%', maxHeight: '500px', maxWidth: '340', height: '500px', }}/>
                     </Col>
 
-                    <Col md={4}>
-                        <div style={{marginTop: '1rem'}}>
-                            <Event />
-                        </div>
-                    </Col>
-
-                    <Col md={4}>
-                        <div style={{marginTop: '1rem'}}>
-                            <Event />
-                        </div>
-                    </Col>
+                    {events}
 
                     <Col md={4}>
                         <div>
@@ -72,17 +89,8 @@ export class Home extends Component {
                         </div>
                     </Col>
 
-                    <Col md={6}>
-                        <div style={{marginTop: '1rem'}}>
-                           <Video />
-                        </div>
-                    </Col>
+                    {videos}
 
-                    <Col md={6}>
-                        <div style={{marginTop: '1rem'}}>
-                            <Video />
-                        </div>
-                    </Col>
                 </Row>
             </Container>
         )

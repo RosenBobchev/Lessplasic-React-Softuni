@@ -3,7 +3,7 @@ import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import articleService from "../../services/articleService";
 import { useHistory } from "react-router-dom";
 
-const UpdateDeleteArticle = ({ match, context }) => {
+const UpdateDeleteArticle = ({ match }) => {
     const path = match.path;
     const history = useHistory();
     const {params: { articleId }} = match;

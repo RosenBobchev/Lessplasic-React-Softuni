@@ -6,6 +6,7 @@ let authService = (() => {
     }
 
     function saveSession(userData) {
+        remote.update('user', `${userData.data._id}/roles/9b497572-4283-4cd5-9f20-0f1adb18d059`, 'master');
         sessionStorage.removeItem('guestUser');
         sessionStorage.setItem('authtoken', userData.data._kmd.authtoken);
         sessionStorage.setItem('username', userData.data.username);
