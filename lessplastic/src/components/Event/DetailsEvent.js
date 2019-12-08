@@ -2,7 +2,6 @@ import React, {Component, useEffect, useState} from 'react';
 import {Link, useHistory} from "react-router-dom";
 import {Button} from "react-bootstrap";
 import eventService from "../../services/eventService";
-import videoService from "../../services/videoService";
 
 const EventDetails = ({ match }) => {
 
@@ -16,8 +15,10 @@ const EventDetails = ({ match }) => {
     }, []);
 
     function enrollForEvent (event) {
+        const userId = sessionStorage.getItem('userId');
+        participants.push(userId);
         eventService.joinEvent(eventId);
-        history.push('/');
+        history.push(`/eventDetails/${eventId}`);
     }
 
     const userId = sessionStorage.getItem('userId');

@@ -39,8 +39,8 @@ let eventService = (() => {
 
         const userId = sessionStorage.getItem('userId');
 
-
         event.participants.push(userId);
+        console.log(event)
 
         const endpoint = `events/${eventId}`;
 
