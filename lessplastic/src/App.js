@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, BrowserRouter as Router } from 'react-router-dom'
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 
 import { Container } from 'react-bootstrap';
 import { Layout } from './components/Layout';
@@ -33,30 +33,32 @@ function App() {
       <Container style={{backgroundImage: `url(${img})`, minHeight: '100%'}} fluid='true'>
               <Router>
                   <Layout>
-                      <Route exact path='/' component={Home} />
-                      <Route path='/privacy' component={Privacy} />
-                      <Route path='/about' component={About} />
-                      <Route path='/articleDetails/:articleId' exact component={ArticleDetails} />
-                      <Route path='/eventDetails/:eventId' exact component={EventDetails} />
-                      <Route path='/videoDetails/:videoId' exact component={VideoDetails} />
-                      <Route path='/articles' exact component={AllArticles} />
-                      <Route path='/events' exact component={AllEvents} />
-                      <Route path='/polls' exact component={AllPolls} />
-                      <Route path='/videos' exact component={AllVideos} />
-                      {!authService.isAuth() ? <Route path='/login' component={Login} /> :  <Route path='/login' component={Home} />}
-                      {!authService.isAuth() ? <Route path='/register' component={Register} /> :  <Route path='/register' component={Home} />}
-                      {authService.isAuth() ? <Route path='/createArticle' component={CreateArticle} /> :  <Route path='/createArticle' component={Home} />}
-                      {authService.isAuth() ? <Route path='/createEvent' component={CreateEvent} /> :  <Route path='/createEvent' component={Home} />}
-                      {authService.isAuth() ? <Route path='/createPoll' component={CreatePoll} /> :  <Route path='/createPoll' component={Home} />}
-                      {authService.isAuth() ? <Route path='/addVideo' component={AddVideo} /> :  <Route path='/addVideo' component={Home} />}
-                      {authService.isAuth() ? <Route path='/deleteArticle/:articleId' component={UpdateDeleteArticle} /> :  <Route path='/deleteArticle/:articleId' component={Home} />}
-                      {authService.isAuth() ? <Route path='/editArticle/:articleId' component={UpdateDeleteArticle} /> :  <Route path='/editArticle/:articleId' component={Home} />}
-                      {authService.isAuth() ? <Route path='/editEvent/:eventId' component={UpdateDeleteEvent} /> :  <Route path='/editEvent/:eventId' component={Home} />}
-                      {authService.isAuth() ? <Route path='/deleteEvent/:eventId' component={UpdateDeleteEvent} /> :  <Route path='/deleteEvent/:eventId' component={Home} />}
-                      {authService.isAuth() ? <Route path='/deleteVideo/:videoId' component={UpdateDeleteVideo} /> :  <Route path='/deleteVideo/:videoId' component={Home} />}
-                      {authService.isAuth() ? <Route path='/editVideo/:videoId' component={UpdateDeleteVideo} /> :  <Route path='/editVideo/:videoId' component={Home} />}
-                      {authService.isAuth() ? <Route path='/deletePoll/:pollId' component={DeletePoll} /> :  <Route path='/deletePoll/:pollId' component={Home} />}
-                </Layout>
+                      <Switch>
+                          <Route exact path='/' component={Home} />
+                          <Route path='/privacy' component={Privacy} />
+                          <Route path='/about' component={About} />
+                          <Route path='/articleDetails/:articleId' exact component={ArticleDetails} />
+                          <Route path='/eventDetails/:eventId' exact component={EventDetails} />
+                          <Route path='/videoDetails/:videoId' exact component={VideoDetails} />
+                          <Route path='/articles' exact component={AllArticles} />
+                          <Route path='/events' exact component={AllEvents} />
+                          <Route path='/polls' exact component={AllPolls} />
+                          <Route path='/videos' exact component={AllVideos} />
+                          {!authService.isAuth() ? <Route path='/login' component={Login} /> :  <Route path='/login' component={Home} />}
+                          {!authService.isAuth() ? <Route path='/register' component={Register} /> :  <Route path='/register' component={Home} />}
+                          {authService.isAuth() ? <Route path='/createArticle' component={CreateArticle} /> :  <Route path='/createArticle' component={Home} />}
+                          {authService.isAuth() ? <Route path='/createEvent' component={CreateEvent} /> :  <Route path='/createEvent' component={Home} />}
+                          {authService.isAuth() ? <Route path='/createPoll' component={CreatePoll} /> :  <Route path='/createPoll' component={Home} />}
+                          {authService.isAuth() ? <Route path='/addVideo' component={AddVideo} /> :  <Route path='/addVideo' component={Home} />}
+                          {authService.isAuth() ? <Route path='/deleteArticle/:articleId' component={UpdateDeleteArticle} /> :  <Route path='/deleteArticle/:articleId' component={Home} />}
+                          {authService.isAuth() ? <Route path='/editArticle/:articleId' component={UpdateDeleteArticle} /> :  <Route path='/editArticle/:articleId' component={Home} />}
+                          {authService.isAuth() ? <Route path='/editEvent/:eventId' component={UpdateDeleteEvent} /> :  <Route path='/editEvent/:eventId' component={Home} />}
+                          {authService.isAuth() ? <Route path='/deleteEvent/:eventId' component={UpdateDeleteEvent} /> :  <Route path='/deleteEvent/:eventId' component={Home} />}
+                          {authService.isAuth() ? <Route path='/deleteVideo/:videoId' component={UpdateDeleteVideo} /> :  <Route path='/deleteVideo/:videoId' component={Home} />}
+                          {authService.isAuth() ? <Route path='/editVideo/:videoId' component={UpdateDeleteVideo} /> :  <Route path='/editVideo/:videoId' component={Home} />}
+                          {authService.isAuth() ? <Route path='/deletePoll/:pollId' component={DeletePoll} /> :  <Route path='/deletePoll/:pollId' component={Home} />}
+                      </Switch>
+                  </Layout>
               </Router>
       </Container>
   );

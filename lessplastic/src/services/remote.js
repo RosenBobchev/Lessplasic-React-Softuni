@@ -40,7 +40,6 @@ let remote = (() => {
         if (data) {
             obj.data = data;
         }
-        console.log(obj)
         return axios(obj);
     }
 

@@ -21,9 +21,11 @@ class Register extends Component {
         event.preventDefault();
 
         const {username, password, city, email} = this.state;
-        authService.register(username, password, city, email).then((userData) => authService.saveSession(userData));
-
-        this.props.history.push('/');
+        authService.register(username, password, city, email)
+            .then((userData) => {
+                authService.saveSession(userData);
+                this.props.history.push('/');
+            })
     };
 
     handleStateChange = event => {

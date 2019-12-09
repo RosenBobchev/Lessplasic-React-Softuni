@@ -16,9 +16,11 @@ export class Login extends Component {
         event.preventDefault();
 
         const {username, password} = this.state;
-        authService.login(username, password).then((userData) => authService.saveSession(userData));
-
-        this.props.history.push('/');
+        authService.login(username, password)
+            .then((userData) => {
+                authService.saveSession(userData);
+                this.props.history.push('/');
+            })
     };
 
     handleStateChange = event => {
