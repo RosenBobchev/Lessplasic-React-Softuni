@@ -10,8 +10,14 @@ let remote = (() => {
         if (auth === 'basic') {
             return `Basic ${btoa(APP_KEY + ":" + APP_SECRET)}`;
         } else if(auth === 'guest') {
-            authService.login('Guest', 'guest').then((userData) => sessionStorage.setItem('guestUser', userData.data._kmd.authtoken));
-            return `Kinvey ${sessionStorage.getItem('guestUser')}`
+            if (sessionStorage.getItem('authtoken')){
+                return `Kinvey ${sessionStorage.getItem('authtoken')}`
+            } else {
+                authService.login('Guest', 'guest').then((userData) => sessionStorage.setItem('guestUser', userData.data._kmd.authtoken));
+                return `Kinvey ${sessionStorage.getItem('guestUser')}`
+            }
+        } else if(auth === 'master') {
+            return `Basic ${btoa(APP_KEY + ":" + '24f64b175dfe4bc1bfa5b3efe2992245')}`;
         } else {
             return `Kinvey ${sessionStorage.getItem('authtoken')}`
         }
