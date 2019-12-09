@@ -30,7 +30,21 @@ let articleService = (() => {
     function getAllArticles() {
         const data = {};
 
-        return remote.get('appdata', 'articles', 'guest', data);
+        return remote.get('appdata', 'articles?query={}&sort={"_kmd.lmt": -1}', 'guest', data);
+    }
+
+    function getTwoArticles() {
+        const data = {};
+
+        return remote.get('appdata', 'articles?query={}&limit=2&sort={"_kmd.lmt": -1}', 'guest', data);
+    }
+
+    function getAllUserArticles() {
+        const data = {};
+
+        const authorId = sessionStorage.getItem('userId');
+
+        return remote.get('appdata', `articles?query={"authorId":"${authorId}"}&sort={"_kmd.lmt": -1}`, 'kinvey', data);
     }
 
     async function editArticle(title, articleImage, content, contentImage, additionalContent, additionalImage, type, articleId) {
@@ -70,6 +84,8 @@ let articleService = (() => {
         getAllArticles,
         editArticle,
         incrementViews,
+        getAllUserArticles,
+        getTwoArticles,
     }
 })();
 

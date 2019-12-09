@@ -14,6 +14,8 @@ const ArticleDetails = ({ match }) => {
         articleService.incrementViews(articleId);
     }, []);
 
+    const authorId = sessionStorage.getItem('userId');
+
     return (
         <div>
             <div className="text-center mt-3">
@@ -42,12 +44,10 @@ const ArticleDetails = ({ match }) => {
             </div>
             <br/>
             <div className="row" style={{justifyContent: 'center', marginBottom: '-80px', marginTop: '20px'}}>
-                <div>
-                    <Link to={`/editArticle/${articleProps._id}`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Edit</Button></Link>
-                </div>
-                <div>
-                    <Link to={`/deleteArticle/${articleProps._id}`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Delete</Button></Link>
-                </div>
+                {articleProps.authorId === authorId ? (<div>
+                        <Link to={`/editArticle/${articleProps._id}`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Edit</Button></Link>
+                        <Link to={`/deleteArticle/${articleProps._id}`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Delete</Button></Link>
+                </div>) : null}
                 <div>
                     <Link to={`/articles`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Back</Button></Link>
                 </div>

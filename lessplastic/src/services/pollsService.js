@@ -33,7 +33,21 @@ let pollService = (() => {
     function getAllPolls() {
         const data = {};
 
-        return remote.get('appdata', 'polls', 'guest', data);
+        return remote.get('appdata', 'polls?query={}&sort={"_kmd.lmt": -1}', 'guest', data);
+    }
+
+    function getOnePoll() {
+        const data = {};
+
+        return remote.get('appdata', 'polls?query={}&limit=1&sort={"_kmd.lmt": -1}', 'guest', data);
+    }
+
+    function getAllUserPolls() {
+        const data = {};
+
+        const authorId = sessionStorage.getItem('userId');
+
+        return remote.get('appdata', `polls?query={"authorId":"${authorId}"}&sort={"_kmd.lmt": -1}`, 'kinvey', data);
     }
 
     async function vote(pollId, answer) {
@@ -77,7 +91,9 @@ let pollService = (() => {
         getPoll,
         getAllPolls,
         editPoll,
-        vote
+        vote,
+        getAllUserPolls,
+        getOnePoll
     }
 })();
 

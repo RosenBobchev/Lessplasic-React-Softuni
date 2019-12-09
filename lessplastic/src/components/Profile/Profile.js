@@ -14,7 +14,7 @@ import eventService from "../../services/eventService";
 import remote from '../../services/remote'
 import pollService from "../../services/pollsService";
 
-export class Home extends Component {
+export default class Profile extends Component {
 
     constructor(props){
         super(props);
@@ -28,17 +28,17 @@ export class Home extends Component {
     }
 
     componentDidMount() {
-        articleService.getTwoArticles().then((data) => this.setState({articlesFromDatabase: data.data}));
-        videoService.getTwoVideos().then((data) => this.setState({videosFromDatabase: data.data}));
-        eventService.getTwoEvents().then((data) => this.setState({eventsFromDatabase: data.data}));
-        pollService.getOnePoll().then((data) => this.setState({pollsFromDatabase: data.data}));
+        articleService.getAllUserArticles().then((data) => this.setState({articlesFromDatabase: data.data}));
+        videoService.getAllUserEvents().then((data) => this.setState({videosFromDatabase: data.data}));
+        eventService.getAllUserEvents().then((data) => this.setState({eventsFromDatabase: data.data}));
+        pollService.getAllUserPolls().then((data) => this.setState({pollsFromDatabase: data.data}));
     }
 
     render() {
         const {articlesFromDatabase, videosFromDatabase, eventsFromDatabase, pollsFromDatabase} = this.state;
         const articles = articlesFromDatabase.map(a => (
             <Col md={4} key={a._id}>
-                <div>
+                <div style={{marginTop: '1rem', marginBottom: '1rem'}}>
                     <Article articleProps={a}/>
                 </div>
             </Col>));
@@ -46,7 +46,7 @@ export class Home extends Component {
 
         const videos = videosFromDatabase.map(v => (
             <Col md={6} key={v._id}>
-                <div style={{marginTop: '1rem'}}>
+                <div style={{marginTop: '1rem', marginBottom: '1rem'}}>
                     <Video videoProps={v}/>
                 </div>
             </Col>
@@ -54,7 +54,7 @@ export class Home extends Component {
 
         const events = eventsFromDatabase.map(e => (
             <Col md={4} key={e._id}>
-                <div style={{marginTop: '1rem'}}>
+                <div style={{marginTop: '1rem', marginBottom: '1rem'}}>
                     <Event eventProps={e}/>
                 </div>
             </Col>
@@ -62,7 +62,7 @@ export class Home extends Component {
 
         const polls = pollsFromDatabase.map(p => (
             <Col md={4} key={p._id}>
-                <div>
+                <div style={{marginTop: '1rem', marginBottom: '1rem'}}>
                     <PollDetails pollProps={p}/>
                 </div>
             </Col>
@@ -70,34 +70,26 @@ export class Home extends Component {
 
         return (
             <Container style={{marginTop: '20px'}}>
+                <h2 style={{textAlign: 'center'}}>Articles</h2>
                 <Row>
-                    <Col md={8}>
-                        <div style={{width: '100%', maxHeight: '400px', maxWidth: '700px', height: 'auto'}}>
-                            <CarouselComponent articles={articlesFromDatabase}/>
-                        </div>
-                    </Col>
-
-                    <Col md={4}>
-                        <div style={{width: '100%', maxHeight: '500px', maxWidth: '500px', height: '500px', marginTop: '10px', marginBottom: '10px'}}>
-                            <FacebookProvider appId="2661552967246067">
-                                <Page href="https://www.facebook.com/LessplasticBulgaria/" tabs="timeline" />
-                            </FacebookProvider>
-                        </div>
-                    </Col>
-
                     {articles}
-
-                    <Col md={4} style={{marginTop: '10px'}}>
-                        <iframe src='https://www.juicer.io/api/feeds/rosenbobchev/iframe' frameBorder='0' style={{width: '100%', maxHeight: '500px', maxWidth: '340', height: '500px', }}/>
-                    </Col>
-
-                    {events}
-
-                    {polls}
-
-                    {videos}
-
                 </Row>
+                <hr />
+                <h2 style={{textAlign: 'center'}}>Events</h2>
+                <Row>
+                    {events}
+                </Row>
+                <hr />
+                <h2 style={{textAlign: 'center'}}>Polls</h2>
+                <Row>
+                    {polls}
+                </Row>
+                <hr />
+                <h2 style={{textAlign: 'center'}}>Videos</h2>
+                <Row>
+                    {videos}
+                </Row>
+                <hr />
             </Container>
         )
     }

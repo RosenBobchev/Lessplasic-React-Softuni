@@ -29,7 +29,21 @@ let eventService = (() => {
     function getAllEvents() {
         const data = {};
 
-        return remote.get('appdata', 'events', 'guest', data);
+        return remote.get('appdata', 'events?query={}&sort={"_kmd.lmt": -1}', 'guest', data);
+    }
+
+    function getTwoEvents() {
+        const data = {};
+
+        return remote.get('appdata', 'events?query={}&limit=2&sort={"_kmd.lmt": -1}', 'guest', data);
+    }
+
+    function getAllUserEvents() {
+        const data = {};
+
+        const authorId = sessionStorage.getItem('userId');
+
+        return remote.get('appdata', `events?query={"authorId":"${authorId}"}&sort={"_kmd.lmt": -1}`, 'kinvey', data);
     }
 
     async function joinEvent(eventId) {
@@ -40,7 +54,6 @@ let eventService = (() => {
         const userId = sessionStorage.getItem('userId');
 
         event.participants.push(userId);
-        console.log(event)
 
         const endpoint = `events/${eventId}`;
 
@@ -68,7 +81,9 @@ let eventService = (() => {
         getEvent,
         getAllEvents,
         editEvent,
-        joinEvent
+        joinEvent,
+        getAllUserEvents,
+        getTwoEvents
     }
 })();
 

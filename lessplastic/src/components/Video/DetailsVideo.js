@@ -7,6 +7,7 @@ const VideoDetails = ({ match }) => {
 
     const { params: { videoId } } = match;
     const [videoProps, setVideo] = useState({});
+    const authorId = sessionStorage.getItem('userId');
 
     useEffect(() => {
         videoService.getVideo(videoId).then((response) => setVideo(response.data[0]));
@@ -32,12 +33,10 @@ const VideoDetails = ({ match }) => {
             </div>
             <br/>
             <div className="row" style={{justifyContent: 'center', marginBottom: '-100px'}}>
-                <div>
+                {videoProps.authorId === authorId ? (<div>
                     <Link to={`/editVideo/${videoProps._id}`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Edit</Button></Link>
-                </div>
-                <div>
                     <Link to={`/deleteVideo/${videoProps._id}`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Delete</Button></Link>
-                </div>
+                </div>) : null}
                 <div>
                     <Link to={`/videos`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Back</Button></Link>
                 </div>

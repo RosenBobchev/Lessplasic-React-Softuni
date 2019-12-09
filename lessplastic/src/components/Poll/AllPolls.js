@@ -23,6 +23,8 @@ export default class allPolls extends Component {
 
     render () {
         const {pollsFromDatabase} = this.state;
+        const authorId = sessionStorage.getItem('userId');
+
                const polls = pollsFromDatabase.map(p =>{
 
                    const answers = [{option: p.firstAnswer, votes: p.firstAnswerVotes},
@@ -44,12 +46,16 @@ export default class allPolls extends Component {
 
                    const pollId = p._id;
 
+                   const buttons = p.authorId === authorId ? (<div>
+                       <Link to={`/editPoll/${p._id}`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Edit</Button></Link>
+                       <Link to={`/deletePoll/${p._id}`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Delete</Button></Link>
+                   </div>) : null;
+
                    return (
                         <Col md={6}>
                         <div style={{margin: '1rem'}}>
                             <Poll question={p.question} answers={answers} onVote={handleVote} customStyles={{theme: 'cyan', questionBold: true}}/>
-                            <Link to={`/deletePoll/${pollId}`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Delete</Button></Link>
-                            <Link to={`/editPoll/${pollId}`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Edit</Button></Link>
+                            {buttons}
                         </div>
                     </Col>)});
 

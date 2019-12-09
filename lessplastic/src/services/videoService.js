@@ -30,7 +30,13 @@ let videoService = (() => {
     function getAllVideos() {
         const data = {};
 
-        return remote.get('appdata', 'videos', 'guest', data);
+        return remote.get('appdata', 'videos?query={}&sort={"_kmd.lmt": -1}', 'guest', data);
+    }
+
+    function getTwoVideos() {
+        const data = {};
+
+        return remote.get('appdata', 'videos?query={}&limit=2&sort={"_kmd.lmt": -1}', 'guest', data);
     }
 
     async function editVideo(title, description, link, videoId) {
@@ -47,12 +53,22 @@ let videoService = (() => {
         return remote.update('appdata', endpoint, 'kinvey', video);
     }
 
+    function getAllUserEvents() {
+        const data = {};
+
+        const authorId = sessionStorage.getItem('userId');
+
+        return remote.get('appdata', `videos?query={"authorId":"${authorId}"}&sort={"_kmd.lmt": -1}`, 'kinvey', data);
+    }
+
     return {
         createVideo,
         deleteVideo,
         getVideo,
         getAllVideos,
         editVideo,
+        getAllUserEvents,
+        getTwoVideos
     }
 })();
 

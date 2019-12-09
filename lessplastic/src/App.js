@@ -23,6 +23,7 @@ import AllArticles from "./components/Article/AllArticles";
 import AllEvents from "./components/Event/AllEvents";
 import AllPolls from "./components/Poll/AllPolls";
 import AllVideos from "./components/Video/AllVideos";
+import Profile from "./components/Profile/Profile";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import img from "./Images/background-img.jpg";
@@ -58,6 +59,7 @@ function App() {
                           {authService.isAuth() ? <Route path='/editVideo/:videoId' component={UpdateDeleteVideo} /> :  <Route path='/editVideo/:videoId' component={Home} />}
                           {authService.isAuth() ? <Route path='/deletePoll/:pollId' component={UpdateDeletePoll} /> :  <Route path='/deletePoll/:pollId' component={Home} />}
                           {authService.isAuth() ? <Route path='/editPoll/:pollId' component={UpdateDeletePoll} /> :  <Route path='/editPoll/:pollId' component={Home} />}
+                          {authService.isAuth() ? <Route path='/user' component={Profile} /> :  <Route path='/user' component={Home} />}
                       </Switch>
                   </Layout>
               </Router>
