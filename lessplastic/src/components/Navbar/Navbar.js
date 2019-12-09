@@ -24,7 +24,6 @@ class NavMenu extends Component {
     };
 
     render() {
-        console.log(authService.isAuth())
         const navBar = authService.isAuth() ? (
             <NavDropdown title="User panel" id="collasible-nav-dropdown">
                 <NavDropdown.Item href="/createArticle">Create Article</NavDropdown.Item>

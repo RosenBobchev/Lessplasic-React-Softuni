@@ -23,8 +23,7 @@ export class CreateEvent extends Component {
         const userId = sessionStorage.getItem('userId');
         let participants = [];
         participants.push(userId);
-        eventService.createEvent(name, description, towns, dateOfEvent, participants, userId);
-        this.props.history.push('/');
+        eventService.createEvent(name, description, towns, dateOfEvent, participants, userId).then((data) => this.props.history.push('/'));
     };
 
     handleStateChange = event => {

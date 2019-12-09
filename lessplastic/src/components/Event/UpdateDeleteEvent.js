@@ -24,11 +24,9 @@ const UpdateDeleteEvent = ({ match }) => {
         event.preventDefault();
 
         if (deleteTrue === 'delete'){
-            eventService.deleteEvent(eventId);
-            history.push('/')
+            eventService.deleteEvent(eventId).then((data) => history.push('/'));
         } else {
-            eventService.editEvent(name, description, towns, dateOfEvent, eventId);
-            history.push(`/`);
+            eventService.editEvent(name, description, towns, dateOfEvent, eventId).then((data) => history.push('/'));
         }
     }
 

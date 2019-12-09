@@ -28,11 +28,9 @@ const UpdateDeleteArticle = ({ match }) => {
         event.preventDefault();
 
         if (deleteTrue === 'delete'){
-            articleService.deleteArticle(articleId);
-            history.push('/')
+            articleService.deleteArticle(articleId).then((data) => history.push('/'));
         } else {
-            articleService.editArticle(title, articleImage, content, contentImage, additionalContent, additionalImage, type, articleId);
-            history.push("/");
+            articleService.editArticle(title, articleImage, content, contentImage, additionalContent, additionalImage, type, articleId).then((data) => history.push('/'));
         }
     }
 

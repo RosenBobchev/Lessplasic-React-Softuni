@@ -18,7 +18,7 @@ import VideoDetails  from './components/Video/DetailsVideo';
 import UpdateDeleteArticle from "./components/Article/UpdateDeleteArticle";
 import UpdateDeleteEvent from "./components/Event/UpdateDeleteEvent";
 import UpdateDeleteVideo from "./components/Video/UpdateDeleteVideo";
-import DeletePoll from "./components/Poll/DeletePoll";
+import UpdateDeletePoll from './components/Poll/UpdateDeletePoll'
 import AllArticles from "./components/Article/AllArticles";
 import AllEvents from "./components/Event/AllEvents";
 import AllPolls from "./components/Poll/AllPolls";
@@ -56,7 +56,8 @@ function App() {
                           {authService.isAuth() ? <Route path='/deleteEvent/:eventId' component={UpdateDeleteEvent} /> :  <Route path='/deleteEvent/:eventId' component={Home} />}
                           {authService.isAuth() ? <Route path='/deleteVideo/:videoId' component={UpdateDeleteVideo} /> :  <Route path='/deleteVideo/:videoId' component={Home} />}
                           {authService.isAuth() ? <Route path='/editVideo/:videoId' component={UpdateDeleteVideo} /> :  <Route path='/editVideo/:videoId' component={Home} />}
-                          {authService.isAuth() ? <Route path='/deletePoll/:pollId' component={DeletePoll} /> :  <Route path='/deletePoll/:pollId' component={Home} />}
+                          {authService.isAuth() ? <Route path='/deletePoll/:pollId' component={UpdateDeletePoll} /> :  <Route path='/deletePoll/:pollId' component={Home} />}
+                          {authService.isAuth() ? <Route path='/editPoll/:pollId' component={UpdateDeletePoll} /> :  <Route path='/editPoll/:pollId' component={Home} />}
                       </Switch>
                   </Layout>
               </Router>

@@ -12,6 +12,7 @@ import articleService from "../../services/articleService";
 import videoService from "../../services/videoService";
 import eventService from "../../services/eventService";
 import remote from '../../services/remote'
+import pollService from "../../services/pollsService";
 
 export class Home extends Component {
 
@@ -22,6 +23,7 @@ export class Home extends Component {
             articlesFromDatabase: [],
             videosFromDatabase: [],
             eventsFromDatabase: [],
+            pollsFromDatabase: [],
         }
     }
 
@@ -29,10 +31,11 @@ export class Home extends Component {
         articleService.getAllArticles().then((data) => this.setState({articlesFromDatabase: data.data}));
         videoService.getAllVideos().then((data) => this.setState({videosFromDatabase: data.data}));
         eventService.getAllEvents().then((data) => this.setState({eventsFromDatabase: data.data}));
+        pollService.getAllPolls().then((data) => this.setState({pollsFromDatabase: data.data}));
     }
 
     render() {
-        const {articlesFromDatabase, videosFromDatabase, eventsFromDatabase} = this.state;
+        const {articlesFromDatabase, videosFromDatabase, eventsFromDatabase, pollsFromDatabase} = this.state;
         const articles = articlesFromDatabase.map(a => (
             <Col md={4} key={a._id}>
                 <div>
@@ -57,6 +60,13 @@ export class Home extends Component {
             </Col>
         ));
 
+        const polls = pollsFromDatabase.map(p => (
+            <Col md={4} key={p._id}>
+                <div>
+                    <PollDetails pollProps={p}/>
+                </div>
+            </Col>
+        ));
 
         return (
             <Container style={{marginTop: '20px'}}>
@@ -83,11 +93,7 @@ export class Home extends Component {
 
                     {events}
 
-                    <Col md={4}>
-                        <div>
-                            <PollDetails />
-                        </div>
-                    </Col>
+                    {polls}
 
                     {videos}
 

@@ -23,11 +23,10 @@ const UpdateDeleteVideo = ({ match }) => {
         event.preventDefault();
 
         if (deleteTrue === 'delete'){
-            videoService.deleteVideo(videoId);
-            history.push('/')
+            videoService.deleteVideo(videoId).then((data) => history.push('/'));
+
         } else {
-            videoService.editVideo(title, description, link, videoId);
-            history.push(`/`);
+            videoService.editVideo(title, description, link, videoId).then((data) => history.push('/'));
         }
     }
 

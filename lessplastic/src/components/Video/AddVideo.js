@@ -19,8 +19,7 @@ export class AddVideo extends Component {
 
         const {title, description, link} = this.state;
 
-        videoService.createVideo(title, description, link);
-        this.props.history.push('/');
+        videoService.createVideo(title, description, link).then((data) => this.props.history.push('/'));
     };
 
     handleStateChange = event => {

@@ -1,38 +1,49 @@
 import React, { Component } from 'react';
 import Poll from 'react-polls';
-
-// Declaring poll question and answers
-const pollQuestion = 'Is react-polls useful?';
-const pollAnswers = [
-    { option: 'Yes', votes: 8 },
-    { option: 'No', votes: 2 }
-];
+import pollService from "../../services/pollsService";
 
 export default class PollDetails extends Component {
     // Setting answers to state to reload the component with each vote
-    state = {
-        pollAnswers: [...pollAnswers]
-    };
+    constructor(props) {
+        super(props);
 
+        this.state = {
+            firstAnswerVotes: this.props.pollProps.firstAnswerVotes,
+            secondAnswerVotes: this.props.pollProps.secondAnswerVotes,
+            thirdAnswerVotes: this.props.pollProps.thirdAnswerVotes,
+        };
+    }
 
     // Handling user vote
     // Increments the votes count of answer when the user votes
     handleVote = voteAnswer => {
-        const { pollAnswers } = this.state;
-        const newPollAnswers = pollAnswers.map(answer => {
-            if (answer.option === voteAnswer) answer.votes++;
-            return answer
-        });
-        this.setState({
-            pollAnswers: newPollAnswers
-        })
+        let { firstAnswerVotes,  secondAnswerVotes, thirdAnswerVotes} = this.state;
+
+        if (this.props.pollProps.firstAnswer === voteAnswer) {
+            firstAnswerVotes += 1;
+            this.setState({firstAnswerVotes: firstAnswerVotes})
+        } else if (this.props.pollProps.secondAnswer === voteAnswer) {
+            secondAnswerVotes += 1;
+            this.setState({secondAnswerVotes: secondAnswerVotes})
+        } else {
+            thirdAnswerVotes += 1;
+            this.setState({thirdAnswerVotes: thirdAnswerVotes})
+        }
+
+        pollService.vote(this.props.pollProps._id, voteAnswer)
     };
 
+
     render () {
-        const { pollAnswers } = this.state;
+        let { firstAnswerVotes,  secondAnswerVotes, thirdAnswerVotes} = this.state;
+
+        const answers = [{option: this.props.pollProps.firstAnswer, votes: firstAnswerVotes},
+            {option: this.props.pollProps.secondAnswer, votes: secondAnswerVotes},
+            {option: this.props.pollProps.thirdAnswer, votes: thirdAnswerVotes}];
+
         return (
             <div>
-                <Poll question={pollQuestion} answers={pollAnswers} onVote={this.handleVote} customStyles={{theme: 'cyan', questionBold: true}}/>
+                <Poll question={this.props.pollProps.question} answers={answers} onVote={this.handleVote} customStyles={{theme: 'cyan', questionBold: true}}/>
             </div>
         );
     }

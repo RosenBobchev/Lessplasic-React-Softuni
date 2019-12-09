@@ -23,8 +23,7 @@ export class CreateArticle extends Component {
 
         const {title, articleImage, content, contentImage, additionalContent, additionalImage, type} = this.state;
 
-        articleService.createArticle(title, articleImage, content, contentImage, additionalContent, additionalImage, type);
-        this.props.history.push('/');
+        articleService.createArticle(title, articleImage, content, contentImage, additionalContent, additionalImage, type).then((data) => this.props.history.push('/'));
     };
 
     handleStateChange = event => {

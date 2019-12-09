@@ -2,8 +2,8 @@ import remote from './remote'
 
 let eventService = (() => {
 
-    function createEvent(name, description, towns, dateOfEvent, participants, userId) {
-        let obj = { name, description, towns, dateOfEvent, participants, userId };
+    function createEvent(name, description, towns, dateOfEvent, participants, authorId) {
+        let obj = { name, description, towns, dateOfEvent, participants, authorId };
 
         return remote.post('appdata', 'events', 'kinvey', obj)
     }
