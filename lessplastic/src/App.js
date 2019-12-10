@@ -3,7 +3,7 @@ import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 
 import { Container } from 'react-bootstrap';
 import { Layout } from './components/Layout';
-import { Home } from './components/Home/Home';
+import  {Home}  from './components/Home/Home';
 import { Login } from './components/Login/Login';
 import Register  from './components/Register/Register';
 import { Privacy } from './components/Common/Privacy';

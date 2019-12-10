@@ -1,17 +1,23 @@
 import React, {useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
-import {Button} from "react-bootstrap";
+import {Button, Container} from "react-bootstrap";
 import videoService from "../../services/videoService";
+import authService from "../../services/authService";
 
 const VideoDetails = ({ match }) => {
 
     const { params: { videoId } } = match;
     const [videoProps, setVideo] = useState({});
     const authorId = sessionStorage.getItem('userId');
+    const adminRoleId = 'fdd2fd10-b71d-491a-9d2b-66305ad2171c';
 
     useEffect(() => {
         videoService.getVideo(videoId).then((response) => setVideo(response.data[0]));
     }, []);
+
+    const [roles, setRoles] = useState([]);
+
+    useEffect(() => {authService.getUserRoles(authorId).then((response) => setRoles(response.data[0]))}, []);
 
     return (
         <div style={{marginTop: '20px'}}>
@@ -33,7 +39,7 @@ const VideoDetails = ({ match }) => {
             </div>
             <br/>
             <div className="row" style={{justifyContent: 'center', marginBottom: '-100px'}}>
-                {videoProps.authorId === authorId ? (<div>
+                {videoProps.authorId === authorId || roles.roleId === adminRoleId ? (<div>
                     <Link to={`/editVideo/${videoProps._id}`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Edit</Button></Link>
                     <Link to={`/deleteVideo/${videoProps._id}`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Delete</Button></Link>
                 </div>) : null}

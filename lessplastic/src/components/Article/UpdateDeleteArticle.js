@@ -30,7 +30,7 @@ const UpdateDeleteArticle = ({ match }) => {
         if (deleteTrue === 'delete'){
             articleService.deleteArticle(articleId).then((data) => history.push('/'));
         } else {
-            articleService.editArticle(title, articleImage, content, contentImage, additionalContent, additionalImage, type, articleId).then((data) => history.push('/'));
+           articleService.editArticle(title, articleImage, content, contentImage, additionalContent, additionalImage, type, articleId).then((data) => history.push('/'));
         }
     }
 
@@ -42,19 +42,19 @@ const UpdateDeleteArticle = ({ match }) => {
                         <h1 className="text-center mt-3">{deleteTrue === 'delete' ? 'Delete Article' : 'Edit Article'}</h1>
                         <Form.Group controlId="formGridTitle">
                             <Form.Label>Article Title</Form.Label>
-                            <Form.Control placeholder="Title" disabled={deleteTrue === 'delete'} defaultValue={title} onChange={(e) => {setTitle(e.target.value)}}/>
+                            <Form.Control placeholder="Title" disabled={deleteTrue === 'delete'} defaultValue={title} onChange={(e) => {setTitle(e.target.value)}} required/>
                         </Form.Group>
                         <Form.Group controlId="formGridImg">
                             <Form.Label>Article Image</Form.Label>
-                            <Form.Control placeholder="Image url" disabled={deleteTrue === 'delete'} defaultValue={articleImage} onChange={(e) => {setArticleImage(e.target.value)}}/>
+                            <Form.Control placeholder="Image url" disabled={deleteTrue === 'delete'} defaultValue={articleImage} onChange={(e) => {setArticleImage(e.target.value)}} required/>
                         </Form.Group>
                         <Form.Group controlId="formGridContent">
                             <Form.Label>Article Content</Form.Label>
-                            <Form.Control as="textarea" rows='15' placeholder="Content" disabled={deleteTrue === 'delete'} defaultValue={content} onChange={(e) => {setContent(e.target.value)}}/>
+                            <Form.Control as="textarea" rows='15' placeholder="Content" disabled={deleteTrue === 'delete'} defaultValue={content} onChange={(e) => {setContent(e.target.value)}} required/>
                         </Form.Group>
                         <Form.Group controlId="formGridImgForContent">
                             <Form.Label>Content Image</Form.Label>
-                            <Form.Control placeholder="Image url" disabled={deleteTrue === 'delete'} defaultValue={contentImage} onChange={(e) => {setContentImage(e.target.value)}}/>
+                            <Form.Control placeholder="Image url" disabled={deleteTrue === 'delete'} defaultValue={contentImage} onChange={(e) => {setContentImage(e.target.value)}} required/>
                         </Form.Group>
                         <Form.Group controlId="formGridAdditionalContent">
                             <Form.Label>Additional Content(optional)</Form.Label>

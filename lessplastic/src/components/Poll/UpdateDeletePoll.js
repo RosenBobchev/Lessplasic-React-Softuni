@@ -39,21 +39,21 @@ const UpdateDeletePoll = ({ match }) => {
                         <h1 className="text-center mt-3">{deleteTrue === 'delete' ? 'Delete Poll' : 'Edit Poll'}</h1>
                         <Form.Group controlId="formGridQuestion">
                             <Form.Label>Question</Form.Label>
-                            <Form.Control placeholder="Question" disabled={deleteTrue === 'delete'} defaultValue={question} onChange={(e) => {setQuestion(e.target.value)}}/>
+                            <Form.Control placeholder="Question" disabled={deleteTrue === 'delete'} defaultValue={question} onChange={(e) => {setQuestion(e.target.value)}} required/>
                         </Form.Group>
                         <Form.Group controlId="formGridFirstAnswer">
                             <Form.Label>First Answer</Form.Label>
-                            <Form.Control placeholder="Yes" disabled={deleteTrue === 'delete'} defaultValue={firstAnswer} onChange={(e) => {setFirstAnswer(e.target.value)}}/>
+                            <Form.Control placeholder="Yes" disabled={deleteTrue === 'delete'} defaultValue={firstAnswer} onChange={(e) => {setFirstAnswer(e.target.value)}} required/>
                         </Form.Group>
 
                         <Form.Group controlId="formGridSecondAnswer">
                             <Form.Label>Second Answer</Form.Label>
-                            <Form.Control placeholder="No" disabled={deleteTrue === 'delete'} defaultValue={secondAnswer} onChange={(e) => {setSecondAnswer(e.target.value)}}/>
+                            <Form.Control placeholder="No" disabled={deleteTrue === 'delete'} defaultValue={secondAnswer} onChange={(e) => {setSecondAnswer(e.target.value)}} required/>
                         </Form.Group>
 
                         <Form.Group controlId="formGridThirdAnswer">
                             <Form.Label>Third Answer</Form.Label>
-                            <Form.Control placeholder="Maybe" disabled={deleteTrue === 'delete'} defaultValue={thirdAnswer} onChange={(e) => {setThirdAnswer(e.target.value)}}/>
+                            <Form.Control placeholder="Maybe" disabled={deleteTrue === 'delete'} defaultValue={thirdAnswer} onChange={(e) => {setThirdAnswer(e.target.value)}} required/>
                         </Form.Group>
                         <Form.Group className="text-center" id="formGridButton">
                             <Button className="text-center" variant="primary" type="submit">{deleteTrue === 'delete' ? 'Delete' : 'Edit'}</Button>

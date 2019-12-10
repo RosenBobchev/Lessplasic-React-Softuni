@@ -10,10 +10,15 @@ const EventDetails = ({ match }) => {
     const history = useHistory();
     const [eventProps, setEvent] = useState({});
     const [participants, setParticipants] = useState([]);
+    const [roles, setRoles] = useState([]);
+    const adminRoleId = 'fdd2fd10-b71d-491a-9d2b-66305ad2171c';
+    const authorId = sessionStorage.getItem('userId');
 
     useEffect(() => {
         eventService.getEvent(eventId).then((response) => setEvent(response.data[0], setParticipants(response.data[0].participants)));
     }, []);
+
+    useEffect(() => {authService.getUserRoles(authorId).then((response) => setRoles(response.data[0]))}, []);
 
     function enrollForEvent (event) {
         const userId = sessionStorage.getItem('userId');
@@ -22,7 +27,6 @@ const EventDetails = ({ match }) => {
         history.push(`/eventDetails/${eventId}`);
     }
 
-    const authorId = sessionStorage.getItem('userId');
     const isEnrolled = participants.includes(authorId);
 
     const joinEvent = isEnrolled ? <p>You already enrolled for this event!</p> : (
@@ -59,7 +63,7 @@ const EventDetails = ({ match }) => {
             </div>
             <br />
             <div className="row" style={{justifyContent: 'center' , marginBottom: '-80px', marginTop: '20px'}}>
-                {eventProps.authorId === authorId ? (<div>
+                {eventProps.authorId === authorId  || roles.roleId === adminRoleId ? (<div>
                     <Link to={`/editEvent/${eventProps._id}`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Edit</Button></Link>
                     <Link to={`/deleteEvent/${eventProps._id}`} className="btn btn-color text-color"><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Delete</Button></Link>
                 </div>) : null}

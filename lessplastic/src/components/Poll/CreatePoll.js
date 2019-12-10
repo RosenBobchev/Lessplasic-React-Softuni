@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Row, Col, Button, Container } from 'react-bootstrap';
+import { Form, Row, Col, Button, Container, Alert } from 'react-bootstrap';
 import pollService from "../../services/pollsService";
 
 export class CreatePoll extends Component {
@@ -12,6 +12,7 @@ export class CreatePoll extends Component {
             firstAnswer: '',
             secondAnswer: '',
             thirdAnswer: '',
+            errors: [],
         }
     }
 
@@ -19,9 +20,31 @@ export class CreatePoll extends Component {
         event.preventDefault();
 
         const {question, firstAnswer, secondAnswer, thirdAnswer} = this.state;
-        const authorId = sessionStorage.getItem('userId');
 
-        pollService.createPoll(question, firstAnswer, secondAnswer, thirdAnswer, authorId).then((data) => this.props.history.push('/'));
+        const errorsArray = [];
+
+        this.setState({errors: []}, () => {
+            if (question.length < 6){
+                let error = 'Question should be at least 6 symbols long!';
+                errorsArray.push(error);
+            } if (firstAnswer.length < 2){
+                let error = 'First Answer should be at least 2 symbols long!';
+                errorsArray.push(error);
+            } if (secondAnswer.length < 2){
+                let error = 'Second Answer should be at least 2 symbols long!';
+                errorsArray.push(error);
+            } if (thirdAnswer.length < 2){
+                let error = 'Third Answer should be at least 2 symbols long!';
+                errorsArray.push(error);
+            }
+
+            if (errorsArray.length) {
+                this.setState({errors: errorsArray});
+            } else {
+                const authorId = sessionStorage.getItem('userId');
+                pollService.createPoll(question, firstAnswer, secondAnswer, thirdAnswer, authorId).then((data) => this.props.history.push('/'));
+            }
+        });
     };
 
     handleStateChange = event => {
@@ -30,29 +53,33 @@ export class CreatePoll extends Component {
     };
 
     render() {
+        const {errors} = this.state;
+        const errorsToShow = errors !== [] ? errors.map(e => <Alert key={e} variant="danger">{e}</Alert>) : null;
+
         return (
             <Container>
                 <Row>
                     <Col md={{ span: 6, offset: 3 }}>
                         <Form onSubmit={this.handleSubmit}>
                             <h1 className="text-center mt-3">Create Poll</h1>
+                            {errorsToShow}
                             <Form.Group controlId="formGridQuestion">
                                 <Form.Label>Question</Form.Label>
-                                <Form.Control placeholder="Question" name="question" onChange={this.handleStateChange}/>
+                                <Form.Control placeholder="Question" name="question" onChange={this.handleStateChange} required/>
                             </Form.Group>
                             <Form.Group controlId="formGridFirstAnswer">
                                 <Form.Label>First Answer</Form.Label>
-                                <Form.Control placeholder="Yes" name="firstAnswer" onChange={this.handleStateChange}/>
+                                <Form.Control placeholder="Yes" name="firstAnswer" onChange={this.handleStateChange} required/>
                             </Form.Group>
 
                             <Form.Group controlId="formGridSecondAnswer">
                                 <Form.Label>Second Answer</Form.Label>
-                                <Form.Control placeholder="No" name="secondAnswer" onChange={this.handleStateChange}/>
+                                <Form.Control placeholder="No" name="secondAnswer" onChange={this.handleStateChange} required/>
                             </Form.Group>
 
                             <Form.Group controlId="formGridThirdAnswer">
                                 <Form.Label>Third Answer</Form.Label>
-                                <Form.Control placeholder="Maybe" name="thirdAnswer" onChange={this.handleStateChange}/>
+                                <Form.Control placeholder="Maybe" name="thirdAnswer" onChange={this.handleStateChange} required/>
                             </Form.Group>
                             <Form.Group className="text-center" id="formGridButton">
                                 <Button className="text-center" variant="primary" type="submit">Create</Button>

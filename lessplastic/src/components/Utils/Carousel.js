@@ -9,7 +9,7 @@ const CarouselComponent = ({articles}) => {
                 className="d-block w-100"
                 src={a.articleImage}
                 alt="First slide"
-                 style={{width: '100%', maxHeight: '400px', maxWidth: '700px', height: 'auto'}}
+                style={{width: '100%', maxHeight: '400px', maxWidth: '700px', height: 'auto'}}
             />
             <Carousel.Caption>
                 <h3>{a.title}</h3>

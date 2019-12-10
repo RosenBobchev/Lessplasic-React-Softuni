@@ -11,6 +11,10 @@ let authService = (() => {
         sessionStorage.setItem('userId', userData.data._id);
     }
 
+    function getUserRoles(userId) {
+       return remote.get('user', `${userId}/roles`, 'master');
+    }
+
     function setRole(userData) {
         remote.update('user', `${userData.data._id}/roles/9b497572-4283-4cd5-9f20-0f1adb18d059`, 'master');
     }
@@ -37,7 +41,8 @@ let authService = (() => {
         logout,
         register,
         saveSession,
-        setRole
+        setRole,
+        getUserRoles
     }
 })();
 
