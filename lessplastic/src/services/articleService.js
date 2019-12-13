@@ -39,6 +39,12 @@ let articleService = (() => {
         return remote.get('appdata', 'articles?query={}&limit=2&sort={"_kmd.lmt": -1}', 'guest', data);
     }
 
+    function getArticlesWithMostViews() {
+        const data = {};
+
+        return remote.get('appdata', 'articles?query={}&limit=3&sort={"views": -1}', 'guest', data);
+    }
+
     function getAllUserArticles() {
         const data = {};
 
@@ -86,6 +92,7 @@ let articleService = (() => {
         incrementViews,
         getAllUserArticles,
         getTwoArticles,
+        getArticlesWithMostViews
     }
 })();
 

@@ -11,7 +11,7 @@ const Article = ({ articleProps }) => {
                     <Card.Body>
                         <Card.Title style={{color: '#212529'}}>{articleProps.title}</Card.Title>
                         <Card.Text style={{color: '#212529'}}>
-                            {articleProps.content}
+                            {articleProps.content.substring(0, 200)}
                         </Card.Text>
                         <Link to={`/articleDetails/${articleProps._id}`} style={{ flexDirection: 'row', justifyContent: 'flex-end', display: 'flex', textDecoration: 'none'}}><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>Read More</Button></Link>
                     </Card.Body>

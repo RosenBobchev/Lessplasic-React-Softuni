@@ -10,7 +10,7 @@ const Event = ({ eventProps }) => {
             <Card.Header>Event</Card.Header>
             <Card.Body>
                 <Card.Title>{eventProps.name}</Card.Title>
-                <Card.Text>{eventProps.description}</Card.Text>
+                <Card.Text>{eventProps.description.substring(0, 200)}</Card.Text>
                 <Link to={`/eventDetails/${eventProps._id}`}  style={{flexDirection: 'row', justifyContent: 'flex-end', display: 'flex', textDecoration: 'none'}}><Button style={{backgroundColor: 'deepskyblue', borderColor: 'deepskyblue'}}>See more</Button></Link>
             </Card.Body>
         </Card>

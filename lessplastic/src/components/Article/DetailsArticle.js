@@ -12,7 +12,9 @@ const ArticleDetails = ({ match }) => {
     const authorId = sessionStorage.getItem('userId');
     const [roles, setRoles] = useState([]);
     const adminRoleId = 'fdd2fd10-b71d-491a-9d2b-66305ad2171c';
+    let date = articleProps._kmd !== undefined ? articleProps._kmd.lmt : 0;
 
+    console.log(articleProps._kmd)
     useEffect(() => {
         articleService.getArticle(articleId).then((response) => setArticle(response.data[0]));
         articleService.incrementViews(articleId);
@@ -28,7 +30,7 @@ const ArticleDetails = ({ match }) => {
             <br/>
             <h1 className="text-center">{articleProps.title}</h1>
             <div className="row col-md-12">
-                <h5 className="text-center col-md-6">Created at: 28.11.2019</h5>
+                <h5 className="text-center col-md-6">Created at: {date}</h5>
                 <h5 className="text-center col-md-6">Views: {articleProps.views}</h5>
             </div>
             <br/>

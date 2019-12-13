@@ -21,6 +21,7 @@ export class Home extends Component {
 
         this.state = {
             articlesFromDatabase: [],
+            articlesForCarousel: [],
             videosFromDatabase: [],
             eventsFromDatabase: [],
             pollsFromDatabase: [],
@@ -29,13 +30,14 @@ export class Home extends Component {
 
     componentDidMount() {
         articleService.getTwoArticles().then((data) => this.setState({articlesFromDatabase: data.data}));
+        articleService.getArticlesWithMostViews().then((data) => this.setState({articlesForCarousel: data.data}));
         videoService.getTwoVideos().then((data) => this.setState({videosFromDatabase: data.data}));
         eventService.getTwoEvents().then((data) => this.setState({eventsFromDatabase: data.data}));
         pollService.getOnePoll().then((data) => this.setState({pollsFromDatabase: data.data}));
     }
 
     render() {
-        const {articlesFromDatabase, videosFromDatabase, eventsFromDatabase, pollsFromDatabase} = this.state;
+        const {articlesFromDatabase, videosFromDatabase, eventsFromDatabase, pollsFromDatabase, articlesForCarousel} = this.state;
         const articles = articlesFromDatabase.map(a => (
             <Col md={4} key={a._id}>
                 <div>
@@ -73,7 +75,7 @@ export class Home extends Component {
                 <Row>
                     <Col md={8}>
                         <div style={{width: '100%', maxHeight: '400px', maxWidth: '700px', height: 'auto'}}>
-                            <CarouselComponent articles={articlesFromDatabase}/>
+                            <CarouselComponent articles={articlesForCarousel}/>
                         </div>
                     </Col>
 

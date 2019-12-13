@@ -44,7 +44,7 @@ export class CreateArticle extends Component {
                     errorsArray.push(error);
                 }
             } if(additionalImage.length > 1) {
-                if (additionalImage.startsWith('http')){
+                if (!additionalImage.startsWith('http')){
                     let error = 'Additional Content Image url should start with http/https!';
                     errorsArray.push(error);
                 }

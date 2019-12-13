@@ -13,7 +13,7 @@ const CarouselComponent = ({articles}) => {
             />
             <Carousel.Caption>
                 <h3>{a.title}</h3>
-                <p>{a.content}</p>
+                <p>{a.content.substring(0, 200)}</p>
             </Carousel.Caption>
         </Carousel.Item>
     ));
