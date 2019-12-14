@@ -50,6 +50,7 @@ class Register extends Component {
                 authService.register(username, password, city, email)
                     .then((userData) => {
                         authService.saveSession(userData);
+                        authService.setRole(userData);
                         this.props.history.push('/');
                     })
                     .catch((error) => {this.setState({ serverError: "Username already exists!" })})

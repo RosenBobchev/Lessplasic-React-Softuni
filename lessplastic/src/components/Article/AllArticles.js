@@ -10,16 +10,30 @@ export default class AllArticles extends Component {
         super(props);
 
         this.state = {
-            articlesFromDatabase: []
+            forKids: [],
+            regular: [],
+            science: [],
         }
     }
     componentDidMount() {
-        articleService.getAllArticles().then((data) => this.setState({articlesFromDatabase: data.data}));
+        articleService.getArticlesForKids().then((data) => this.setState({forKids: data.data}));
+        articleService.getRegularArticles().then((data) => this.setState({regular: data.data}));
+        articleService.getScienceArticles().then((data) => this.setState({science: data.data}));
     }
 
     render() {
-        const {articlesFromDatabase} = this.state;
-        const articles = articlesFromDatabase.map(a => (
+        const {science, forKids, regular} = this.state;
+        const scienceArticles = science.map(a => (
+            <div key={a._id} style={{marginTop: '10px', marginBottom: '10px', width: '80%', display: 'inline-block'}}>
+                <Article articleProps={a}/>
+            </div>));
+
+        const regularArticles = regular.map(a => (
+            <div key={a._id} style={{marginTop: '10px', marginBottom: '10px', width: '80%', display: 'inline-block'}}>
+                <Article articleProps={a}/>
+            </div>));
+
+        const forKidsArticles = forKids.map(a => (
             <div key={a._id} style={{marginTop: '10px', marginBottom: '10px', width: '80%', display: 'inline-block'}}>
                 <Article articleProps={a}/>
             </div>));
@@ -27,7 +41,18 @@ export default class AllArticles extends Component {
         return (
             <Container>
                 <div style={{textAlign: 'center'}}>
-                    {articles}
+                    <hr />
+                    <h2>Regular</h2>
+                    <hr />
+                    {regularArticles}
+                    <hr />
+                    <h2>Science</h2>
+                    <hr />
+                    {scienceArticles}
+                    <hr />
+                    <h2>For Kids</h2>
+                    <hr />
+                    {forKidsArticles}
                 </div>
             </Container>
         )

@@ -14,13 +14,12 @@ const ArticleDetails = ({ match }) => {
     const adminRoleId = 'fdd2fd10-b71d-491a-9d2b-66305ad2171c';
     let date = articleProps._kmd !== undefined ? articleProps._kmd.lmt : 0;
 
-    console.log(articleProps._kmd)
     useEffect(() => {
         articleService.getArticle(articleId).then((response) => setArticle(response.data[0]));
         articleService.incrementViews(articleId);
     }, []);
 
-    useEffect(() => {authService.getUserRoles(authorId).then((response) => setRoles(response.data[0]))}, []);
+    useEffect(() => {authService.getUserRoles(authorId).then((response) => setRoles(response.data[0], console.log(response)))}, []);
 
     return (
         <div>

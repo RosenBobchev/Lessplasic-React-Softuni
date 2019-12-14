@@ -45,6 +45,24 @@ let articleService = (() => {
         return remote.get('appdata', 'articles?query={}&limit=3&sort={"views": -1}', 'guest', data);
     }
 
+    function getArticlesForKids() {
+        const data = {};
+
+        return remote.get('appdata', 'articles?query={"type": "Kids"}&limit=3&sort={"_kmd.lmt": -1}', 'guest', data);
+    }
+
+    function getScienceArticles() {
+        const data = {};
+
+        return remote.get('appdata', 'articles?query={"type": "Science"}&limit=3&sort={"_kmd.lmt": -1}', 'guest', data);
+    }
+
+    function getRegularArticles() {
+        const data = {};
+
+        return remote.get('appdata', 'articles?query={"type": "Regular"}&limit=3&sort={"_kmd.lmt": -1}', 'guest', data);
+    }
+
     function getAllUserArticles() {
         const data = {};
 
@@ -92,7 +110,10 @@ let articleService = (() => {
         incrementViews,
         getAllUserArticles,
         getTwoArticles,
-        getArticlesWithMostViews
+        getArticlesWithMostViews,
+        getArticlesForKids,
+        getRegularArticles,
+        getScienceArticles,
     }
 })();
 

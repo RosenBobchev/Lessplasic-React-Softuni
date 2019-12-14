@@ -24,10 +24,10 @@ export class AddVideo extends Component {
 
         this.setState({errors: []}, () => {
             if (title.length < 6){
-                let error = 'Титле should be at least 6 symbols long!';
+                let error = 'Title should be at least 6 symbols long!';
                 errorsArray.push(error);
             } if (description.length < 20){
-                let error = 'Description should be at least 2 symbols long!';
+                let error = 'Description should be at least 20 symbols long!';
                 errorsArray.push(error);
             } if (!link.startsWith('http')){
                 let error = 'Link should start with http/https and to be embedded from youtube!';
